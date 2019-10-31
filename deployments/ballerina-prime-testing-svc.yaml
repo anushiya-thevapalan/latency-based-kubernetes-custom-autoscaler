@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ballerina-prime-testing-svc
+spec:
+  ports:
+  - name: prime-service
+    port: 8688
+    targetPort: 8688
+  - name: prometheus-metrics
+    port: 9797
+    targetPort: 9797
+  selector:
+    app: ballerina-prime-testing
+  type: LoadBalancer

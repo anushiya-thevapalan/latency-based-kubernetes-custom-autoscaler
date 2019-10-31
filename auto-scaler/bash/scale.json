@@ -1,0 +1,22 @@
+{
+    "kind": "Scale",
+    "apiVersion": "extensions/v1beta1",
+    "metadata": {
+        "name": "ballerina-prime",
+        "namespace": "default",
+        "selfLink": "/apis/extensions/v1beta1/namespaces/default/deployments/ballerina-prime/scale",
+        "uid": "3c3cd655-f39e-11e9-a23d-42010a80011f",
+        "resourceVersion": "2775483",
+        "creationTimestamp": "2019-10-21T01:00:55Z"
+    },
+    "spec": {
+        "replicas": 1
+    },
+    "status": {
+        "replicas": 1,
+        "selector": {
+            "app": "ballerina-prime"
+        },
+        "targetSelector": "app=ballerina-prime"
+    }
+}

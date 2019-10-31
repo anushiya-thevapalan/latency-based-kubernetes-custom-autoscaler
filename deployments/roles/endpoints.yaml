@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: endpoints
+rules:
+- apiGroups: ["*"] #All api groups eg: /v1, apps/v1 
+  resources: ["endpoints"]
+  verbs: ["update", "put","patch", "get", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: endpoints-rb
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: default
+roleRef:
+  kind: Role
+  name: endpoints
+  apiGroup: ""
+
+
+

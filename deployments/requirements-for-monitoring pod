@@ -1,0 +1,9 @@
+dependencies required on monitoring pod
+1. python version >= 3.5
+2. nano editor
+3. pip - apt-get install python-pip
+	 apt-get install python3-pip
+4. python packages
+	a. numpy - pip3 install numpy
+	b. flask - pip3 install flask
+	c. 

@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: deployments-and-deployements-scale
+rules:
+- apiGroups: ["*"] #All api groups eg: /v1, apps/v1 
+  resources: ["deployments", "deployments/scale"]
+  verbs: ["update", "put","patch", "get", "list"]
+
+
+

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ballerina-metrics-server
+  annotations:
+    "sidecar.istio.io/inject": "false"
+spec:
+  containers:
+  - name: ballerina-metrics-server
+    image: mirage20/k8s-debug-tools
