@@ -27,5 +27,11 @@ spec:
           name: echo-service
         - containerPort: 9797
           name: metrics
+        readinessProbe:
+            httpGet:
+                path: /metrics
+                port: metrics
+            initialDelaySeconds: 30
+            periodSeconds: 3          
       nodeSelector:
         type: springboot-app

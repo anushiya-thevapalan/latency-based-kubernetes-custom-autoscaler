@@ -6,4 +6,5 @@ dependencies required on monitoring pod
 4. python packages
 	a. numpy - pip3 install numpy
 	b. flask - pip3 install flask
-	c. 
+	c. requests - pip3 install requests
+	d. 

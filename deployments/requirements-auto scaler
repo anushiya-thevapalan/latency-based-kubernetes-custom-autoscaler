@@ -1,0 +1,9 @@
+dependencies required on monitoring pod
+1. python version >= 3.5 - apt-get update; apt-get install python3.5 -y
+2. nano editor - apt-get install nano
+3. pip - apt-get install python-pip
+	 apt-get install python3-pip -y
+4. python packages
+	a. numpy - pip3 install numpy
+	b. requests - pip3 install requests
+	c. 

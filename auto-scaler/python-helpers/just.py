@@ -17,3 +17,8 @@ print(URL)
 
 li = ['sdasd','kosw']
 print(tuple(li))
+
+arr = [[1,2],[7,8]]
+array = arr[:]
+array[0][1] = 5
+print(array)

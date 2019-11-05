@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jmeter-test
+  labels:
+    app: jmeter-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jmeter-test
+  template:
+    metadata:
+      labels:
+        app: jmeter-test
+    spec:
+      containers:
+      - name: jmeter
+        image: anushiya/java_and_python:v1
+        command: ["/bin/bash", "-ec", "while :; do echo '.'; sleep 5 ; done"]
+        ports:
+        - containerPort: 9000
