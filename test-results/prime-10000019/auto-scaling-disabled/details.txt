@@ -1,0 +1,3 @@
+CPU allocation per pod  :   100m vCPU
+
+Test ran for concurrency 2 and 5 withpout enabling autoscaling

@@ -1,0 +1,3 @@
+use case,heap,concurrency,garbage collector,workload,average_latency,min_latency,max_latency,percentile_10,percentile_20,percentile_50,percentile_90,percentile_99,percentile_999,percentile_9999,percentile_99999,percentile_999999,percentile_9999999,throughput
+prime,100m,2,UseParallelGC,10000019,194.62243446453974,95,495,104.0,194.0,199.0,291.0,304.0,401.08000000000084,495.0,495.0,495.0,495.0,8.201666666666666
+prime,100m,5,UseParallelGC,10000019,401.3550979407333,100,1103,303.0,307.0,399.0,499.0,696.0,798.0,1037.3079999999827,1096.4307999999783,1102.3430800000078,1102.9343080000108,9.955
