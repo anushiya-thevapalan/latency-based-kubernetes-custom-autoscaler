@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jmeter-with-plugins
+  labels:
+    app: jmeter-with-plugins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jmeter-with-plugins
+  template:
+    metadata:
+      labels:
+        app: jmeter-with-plugins
+    spec:
+      containers:
+      - name: jmeter-with-plugins
+        image: anushiya/jmeter-plugins:v1
+        resources:
+            requests:
+                cpu: "300m"
+                memory: "1Gi"
+        command: ["/bin/bash", "-ec", "while :; do echo '.'; sleep 5 ; done"]
+        ports:
+        - containerPort: 9000
+      nodeSelector:
+        type: springboot-app

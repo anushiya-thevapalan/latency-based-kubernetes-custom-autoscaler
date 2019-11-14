@@ -6,4 +6,6 @@ dependencies required on monitoring pod
 4. python packages
 	a. numpy - pip3 install numpy
 	b. requests - pip3 install requests
-	c. 
+	#additional for baysian auto-scaler
+	c. sklearn - pip3 install sklearn
+	d. matplotlib - pip3 install matplotlib

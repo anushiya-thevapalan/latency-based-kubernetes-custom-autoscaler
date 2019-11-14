@@ -19,8 +19,8 @@ spec:
         image: anushiya/jmeter:v2
         resources:
             requests:
-                cpu: "1500m"
-                memory: "4Gi"
+                cpu: "300m"
+                memory: "1Gi"
         command: ["/bin/bash", "-ec", "while :; do echo '.'; sleep 5 ; done"]
         ports:
         - containerPort: 9000

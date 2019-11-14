@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ballerina-prime-testing
-        image: anushiya/ballerina-prime-testing:v1
+        image: anushiya/ballerina-prime-testing:v2
         resources:
             limits:
                 cpu: "100m"
