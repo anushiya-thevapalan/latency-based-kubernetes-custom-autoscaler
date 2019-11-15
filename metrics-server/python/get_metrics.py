@@ -3,23 +3,39 @@ import subprocess
 import time
 import csv
 import os
+import datetime
 #import numpy as np
 from get_server_metrics import *
 
 def get_metrics(filename):
-    metrics_of_all_pods = []
+    # metrics_of_all_pods = []
     latency_of_all_pods = []
     ip_address = get_replicas_ip(filename)
 
-    time_now = time.time()
+    # time_now = time.time()
+    time_now = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
     latency_stats_file = "/home/metrics-server/python/latency_stats.csv"
+    latency_of_all_pods_file = "/home/metrics-server/python/latency_of_all_pods_file.csv"
 
     for ip in ip_address:
         metrics = query_metrics(ip)
         metrics["timestamp"] = time_now
         print(metrics)
-        metrics_of_all_pods.append(metrics)
+
+        if not os.path.isfile(latency_of_all_pods_file):
+            print("creating file")
+            with open(latency_of_all_pods_file, "a+") as csv_file:
+                writer = csv.writer(csv_file, delimiter=',')
+                headers = ['Pod_IP','Timestamp', 'Average_latency', 'requests', 'std_dev']
+                writer.writerow(headers)
+            
+            with open(latency_of_all_pods_file, "a+") as csv_file:
+                writer = csv.writer(csv_file, delimiter=',')
+                values =  [ip, time_now, metrics["99per"], metrics["requests"], metrics["std_dev"]] 
+                writer.writerow(values)
+                
+        # metrics_of_all_pods.append(metrics)
         print(metrics["99per"])
         latency_of_all_pods.append(metrics["99per"])
     average_latency = get_average_latency(latency_of_all_pods)
