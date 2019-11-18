@@ -1,4 +1,5 @@
-dependencies required on monitoring pod
+dependencies required on jmeter pod
+---------------------------------------
 1. python version >= 3.5 - apt-get update; apt-get install python3.5 -y
 2. nano editor - apt-get install nano
 3. pip - apt-get install python-pip
@@ -7,3 +8,8 @@ dependencies required on monitoring pod
 	a. numpy - pip3 install numpy
 	b. requests - pip3 install requests
 	c. 
+
+Modifications required
+----------------------
+change ./jmeter to jmeter
+change python3 to python3.5

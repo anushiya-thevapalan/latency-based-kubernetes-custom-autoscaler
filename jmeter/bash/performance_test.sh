@@ -1,7 +1,7 @@
 #Script to be used when running a single jmx file
 backend_host_ip=35.226.188.246
 
-#Running on a server - comment it when running on my pc
+#Running on a cloud - comment it when running on my pc
 jmeter_jtl_location=/home/jmeter/jtls
 jmeter_jmx_file_root=/home/jmeter/jmx
 server_metrics_location=/home/jmeter/server-metrics
@@ -13,7 +13,7 @@ jmeter_performance_report_output_file=/home/jmeter/results.csv
 
 server_performance_report_generation_python_file=/home/jmeter/python/collect-metrics.py
 
-#Running on my pc -comment it when running on server
+#Running on my pc -comment it when running on cloud
 # jmeter_jtl_location=/home/anushiyat/Documents/wso2/project/latency-based-kubernetes-custom-autoscaler/jmeter/jtls
 # jmeter_jmx_file_root=/home/anushiyat/Documents/wso2/project/latency-based-kubernetes-custom-autoscaler/jmeter/jmx
 # server_metrics_location=/home/anushiyat/Documents/wso2/project/latency-based-kubernetes-custom-autoscaler/jmeter/server-metrics

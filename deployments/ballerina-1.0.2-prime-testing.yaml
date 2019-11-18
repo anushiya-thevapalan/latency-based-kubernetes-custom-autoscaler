@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ballerina-1.0.2-prime-testing
+  labels:
+    app: ballerina-1.0.2-prime-testing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ballerina-1.0.2-prime-testing
+  template:
+    metadata:
+      labels:
+        app: ballerina-1.0.2-prime-testing
+    spec:
+      containers:
+      - name: ballerina-prime-testing
+        image: anushiya/ballerina-1.0.2-prime-testing:v2
+        resources:
+            limits:
+                cpu: "100m"
+            requests:
+                cpu: "100m"
+        ports:
+        - containerPort: 8688
+          name: echo-service
+        - containerPort: 9797
+          name: metrics
+        readinessProbe:
+            httpGet:
+                path: /metrics
+                port: metrics
+            initialDelaySeconds: 3
+            periodSeconds: 3          
+      nodeSelector:
+        type: springboot-app

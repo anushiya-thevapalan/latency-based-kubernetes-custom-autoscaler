@@ -19,10 +19,10 @@ spec:
         image: anushiya/jmeter-plugins:v1
         resources:
             requests:
-                cpu: "300m"
-                memory: "1Gi"
+                cpu: "100m"
+                #memory: "1Gi"
         command: ["/bin/bash", "-ec", "while :; do echo '.'; sleep 5 ; done"]
         ports:
         - containerPort: 9000
       nodeSelector:
-        type: springboot-app
+        type: auto-scaler

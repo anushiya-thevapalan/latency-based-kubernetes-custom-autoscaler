@@ -1,4 +1,5 @@
-dependencies required on monitoring pod
+dependencies required on auto-scaler pod
+-----------------------------------------
 1. python version >= 3.5 - apt-get update; apt-get install python3.5 -y
 2. nano editor - apt-get install nano
 3. pip - apt-get install python-pip

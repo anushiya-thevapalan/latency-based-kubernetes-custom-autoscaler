@@ -8,3 +8,5 @@ spec:
   containers:
   - name: auto-scaler
     image: mirage20/k8s-debug-tools
+  nodeSelector:
+    type: auto-scaler
