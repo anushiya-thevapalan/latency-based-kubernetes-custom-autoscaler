@@ -19,9 +19,9 @@ spec:
         image: anushiya/ballerina-1.0.2-prime-testing:v2
         resources:
             limits:
-                cpu: "100m"
+                cpu: "1500m"
             requests:
-                cpu: "100m"
+                cpu: "1500m"
         ports:
         - containerPort: 8688
           name: echo-service
@@ -34,4 +34,4 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 3          
       nodeSelector:
-        type: springboot-app
+        type: ballerina
