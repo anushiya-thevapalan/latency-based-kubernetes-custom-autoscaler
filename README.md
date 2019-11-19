@@ -3,8 +3,6 @@
 ##### Clone the repository
 ```bash
 git clone https://github.com/anushiya-thevapalan/latency-based-kubernetes-custom-autoscaler
-```
-```bash
 cd latency-based-kubernetes-custom-autoscaler
 ```
 
@@ -37,7 +35,24 @@ kubectl apply -f monitoring-server.yaml
 ```
 #### Copy the required files into the pod
 ```bash
-kubectl cp 
+kubectl cp auto-scaler /home/auto-scaler
+```
+
+#### exec into the monitoring-server pod
+```bash
+kubectl exec -it monitoring-server bash
+```
+#### Set required permissions
+```bash
+cd home/metrics-server/bash
+chmod +x *.sh
+```
+#### Start the monitoring server
+```bash
+cd bash
+./start_autoscaler.sh
+```
+
 
 
 
