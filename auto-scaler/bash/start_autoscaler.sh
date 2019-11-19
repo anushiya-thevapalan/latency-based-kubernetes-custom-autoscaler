@@ -10,10 +10,7 @@ min_pod=1
 max_pod=20
 filename=$dir/scale.json
 
-runtime="10 minute"
-endtime=$(date -ud "$runtime" +%s)
-
-while [[ $(date -u +%s) -le $endtime ]]
+while true
 do
     echo "Time Now: `date +%H:%M:%S`"
 
