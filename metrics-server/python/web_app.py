@@ -1,4 +1,4 @@
-from get_metrics import *
+from metrics_processor import *
 from flask import Flask
 from flask import jsonify
 import json
@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/")
 def metrics():
     # response = get_metrics(filename = "../bash/endpoints.json")
-    response = get_endpoints()
+    response = get_metrics()
     response = {"latency" : response}
     return jsonify(response)
 

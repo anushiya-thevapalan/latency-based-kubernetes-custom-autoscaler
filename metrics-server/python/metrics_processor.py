@@ -11,6 +11,36 @@ latency_of_all_pods_file = "/home/metrics-server/python/latency_of_all_pods_file
 
 time_now = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
+def get_metrics():
+    get_endpoints()
+    filename = "../bash/endpoints.json"
+
+    ip_address = get_replicas_ip(filename)
+    latency_of_all_pods = []
+
+    for ip in ip_address:
+        #Collecting metrics from individual pods
+        metrics = query_metrics(ip)
+        metrics["timestamp"] = time_now
+        print(metrics)
+            
+        with open(latency_of_all_pods_file, "a+") as csv_file:
+            writer = csv.writer(csv_file, delimiter=',')
+            values =  [ip, time_now, metrics["99per"], metrics["requests"], metrics["std_dev"]] 
+            writer.writerow(values)
+                
+        # metrics_of_all_pods.append(metrics)
+        print(metrics["99per"])
+        latency_of_all_pods.append(metrics["99per"])
+    average_latency = get_average_latency(latency_of_all_pods)
+
+    with open(latency_stats_file, "a+") as csv_file:
+        writer = csv.writer(csv_file, delimiter=',')
+        values =  [time_now, average_latency, len(ip_address)] 
+        writer.writerow(values)
+
+    return average_latency
+
 def get_endpoints():
     subprocess.call(['../bash/get_endpoints.sh'])
     return 
@@ -27,30 +57,3 @@ def get_replicas_ip(filename):
 def get_average_latency(latency_of_all_pods):
     # x = np.percentile(latency_of_all_pods,99)
     return sum(latency_of_all_pods)/len(latency_of_all_pods)
-
-get_endpoints()
-filename = "../bash/endpoints.json"
-
-ip_address = get_replicas_ip(filename)
-latency_of_all_pods = []
-
-for ip in ip_address:
-    #Collecting metrics from individual pods
-    metrics = query_metrics(ip)
-    metrics["timestamp"] = time_now
-    print(metrics)
-        
-    with open(latency_of_all_pods_file, "a+") as csv_file:
-        writer = csv.writer(csv_file, delimiter=',')
-        values =  [ip, time_now, metrics["99per"], metrics["requests"], metrics["std_dev"]] 
-        writer.writerow(values)
-            
-    # metrics_of_all_pods.append(metrics)
-    print(metrics["99per"])
-    latency_of_all_pods.append(metrics["99per"])
-average_latency = get_average_latency(latency_of_all_pods)
-
-with open(latency_stats_file, "a+") as csv_file:
-    writer = csv.writer(csv_file, delimiter=',')
-    values =  [time_now, average_latency, len(ip_address)] 
-    writer.writerow(values)
