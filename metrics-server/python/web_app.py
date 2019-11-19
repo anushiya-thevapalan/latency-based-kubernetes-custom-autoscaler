@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 @app.route("/")
-def get_latency():
+def metrics():
     # response = get_metrics(filename = "../bash/endpoints.json")
     response = get_endpoints()
     response = {"latency" : response}

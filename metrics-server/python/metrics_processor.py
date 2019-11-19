@@ -19,30 +19,14 @@ def get_replicas_ip(filename):
     ip_address = []
     with open(filename, 'r') as datafile:
         data = json.load(datafile)
-        test = data["subsets"][0]["addresses"]
-        for i in test:
+        address = data["subsets"][0]["addresses"]
+        for i in address:
             ip_address.append(i["ip"])
     return ip_address
 
 def get_average_latency(latency_of_all_pods):
     # x = np.percentile(latency_of_all_pods,99)
     return sum(latency_of_all_pods)/len(latency_of_all_pods)
-
-def create_log_files():
-    if not os.path.isfile(latency_of_all_pods_file):
-        print("creating file")
-        with open(latency_of_all_pods_file, "a+") as csv_file:
-            writer = csv.writer(csv_file, delimiter=',')
-            headers = ['Pod_IP','Timestamp', 'Average_latency', 'requests', 'std_dev']
-            writer.writerow(headers)
-
-    if not os.path.isfile(latency_stats_file):
-        print("creating file")
-        with open(latency_stats_file, "a+") as csv_file:
-            writer = csv.writer(csv_file, delimiter=',')
-            headers = ['Timestamp', 'Average_latency', 'Number_of_pods']
-            writer.writerow(headers)
-
 
 get_endpoints()
 filename = "../bash/endpoints.json"
@@ -51,6 +35,7 @@ ip_address = get_replicas_ip(filename)
 latency_of_all_pods = []
 
 for ip in ip_address:
+    #Collecting metrics from individual pods
     metrics = query_metrics(ip)
     metrics["timestamp"] = time_now
     print(metrics)
