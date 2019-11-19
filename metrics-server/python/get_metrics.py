@@ -5,7 +5,7 @@ import csv
 import os
 import datetime
 #import numpy as np
-from get_server_metrics import *
+from metrics_collector import *
 
 def get_metrics(filename):
     # metrics_of_all_pods = []
@@ -30,10 +30,10 @@ def get_metrics(filename):
                 headers = ['Pod_IP','Timestamp', 'Average_latency', 'requests', 'std_dev']
                 writer.writerow(headers)
             
-            with open(latency_of_all_pods_file, "a+") as csv_file:
-                writer = csv.writer(csv_file, delimiter=',')
-                values =  [ip, time_now, metrics["99per"], metrics["requests"], metrics["std_dev"]] 
-                writer.writerow(values)
+        with open(latency_of_all_pods_file, "a+") as csv_file:
+            writer = csv.writer(csv_file, delimiter=',')
+            values =  [ip, time_now, metrics["99per"], metrics["requests"], metrics["std_dev"]] 
+            writer.writerow(values)
                 
         # metrics_of_all_pods.append(metrics)
         print(metrics["99per"])
@@ -70,7 +70,7 @@ def get_replicas_ip(filename):
 
 #Main function to be called
 def get_endpoints():
-    subprocess.call(['../bash/test.sh'])
+    subprocess.call(['../bash/get_endpoints.sh'])
     filename = "../bash/endpoints.json"
      
     return get_metrics(filename)
