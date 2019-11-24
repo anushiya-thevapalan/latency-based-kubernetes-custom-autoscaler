@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 URL="https://kubernetes/api/v1/namespaces/default/endpoints/ballerina-prime-testing-svc"
 TOKEN=/var/run/secrets/kubernetes.io/serviceaccount/token

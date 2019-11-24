@@ -1,3 +1,5 @@
+#!/bin/bash
+
 log_file_creator="../python/log_files_creator.py"
 metrics_server_web_app="../python/monitoring_server.py"
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 URL="https://kubernetes/apis/apps/v1/namespaces/default/deployments/ballerina-prime-testing/scale"
 TOKEN=/var/run/secrets/kubernetes.io/serviceaccount/token
 CA_CERT=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
