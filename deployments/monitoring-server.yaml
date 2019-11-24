@@ -1,12 +1,29 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: monitoring-server
-  annotations:
-    "sidecar.istio.io/inject": "false"
+  labels:
+    app: monitoring-server
 spec:
-  containers:
-  - name: monitoring
-    image: mirage20/k8s-debug-tools
-  nodeSelector:
-    type: auto-scaler
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monitoring-server
+  template:
+    metadata:
+      labels:
+        app: monitoring-server
+    spec:
+      containers:
+      - name: monitoring-server
+        image: anushiya/monitoring-server:v1
+        resources:
+            limits:
+                cpu: "100m"
+            requests:
+                cpu: "100m"
+        ports:
+        - containerPort: 8000
+          name: metrics
+      nodeSelector:
+        type: auto-scaler
