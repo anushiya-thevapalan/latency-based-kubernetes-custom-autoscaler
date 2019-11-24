@@ -1,4 +1,4 @@
-# Latency based kubernetes custom autoscaler
+# Latency based kubernetes Auto-scaler
 
 ##### Clone the repository
 ```bash
@@ -26,55 +26,16 @@ kubectl apply -f deployments-and-deployements-scale-role-binding.yaml
 kubectl apply -f deployments-and-deployements-scale.yaml
 kubectl apply -f endpoints.yaml
 ```
-## Deploying monitoring server
+### Deploying monitoring server
 
-#### Create the pod
 ```bash
 cd deployments
 kubectl apply -f monitoring-server.yaml
 ```
-#### Copy the required files into the pod
-```bash
-kubectl cp metrics-server /home/metrics-server
-```
 
-#### exec into the monitoring-server pod
-```bash
-kubectl exec -it monitoring-server bash
-```
-#### Set required permissions
-```bash
-cd home/metrics-server/bash
-chmod +x *.sh
-```
-#### Start the monitoring server
-```bash
-cd bash
-./start_metrics_server.sh
-```
+### Deploying Auto-scaler
 
-## Deploying Auto-scaler
-
-#### Create the pod
 ```bash
 cd deployments
 kubectl apply -f auto-scaler.yaml
-```
-#### Copy the required files into the pod
-```bash
-kubectl cp auto-scaler /home/auto-scaler
-```
-#### exec into the auto-scaler pod
-```bash
-kubectl exec -it auto-scaler bash
-```
-#### Set required permissions
-```bash
-cd home/auto-scaler/bash
-chmod +x *.sh
-```
-#### Start the aut-scaler
-```bash
-cd bash
-./start_autoscaler.sh
 ```
