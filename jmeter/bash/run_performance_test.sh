@@ -1,4 +1,4 @@
-backend_host_ip=35.226.188.246
+backend_host_ip=ballerina-prime-testing-svc
 
 run_time_length_seconds=600
 #warm_up_time_seconds=300 # check for min vs sec
