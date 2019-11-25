@@ -17,6 +17,7 @@ spec:
       containers:
       - name: monitoring-server
         image: anushiya/monitoring-server:v1
+        imagePullPolicy: IfNotPresent
         resources:
             limits:
                 cpu: "100m"
