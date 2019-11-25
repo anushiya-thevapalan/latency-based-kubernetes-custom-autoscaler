@@ -3,8 +3,10 @@
 #docker push anushiya/auto-scaler:v1
 FROM python:3.5
 
+LABEL maintainer="anushiya122@gmail.com"
+
 RUN apt-get update && apt-get install python3-pip -y
-RUN apt-get install curl
+RUN apt-get install curl -y
 RUN pip3 install numpy requests
 
 ADD bash /home/auto-scaler/bash
