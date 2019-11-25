@@ -18,12 +18,14 @@ do
 
     echo "Latency detail (after 1 min)"
     res=$(curl monitoring-server-svc:8000)
+    echo $res
 
     echo "Sleeping for 60 seconds"
     sleep 60
 
     echo "Getting latency details (After 2 min)"
     latency_response=$(curl monitoring-server-svc:8000)
+    echo $latency_response
 
     curl --cacert ${CA_CERT} -H 'Accept: application/json' -H "Authorization: Bearer $(cat ${TOKEN})" ${URL} > scale.json
 
@@ -36,9 +38,4 @@ do
     echo "Sleeping for 60 seconds"
     sleep 60
     
-    echo "Latency detail (after 1 min)"
-    res=$(curl monitoring-server-svc:8000)
-
-    echo "Sleeping for 60 seconds"
-    sleep 60
 done
