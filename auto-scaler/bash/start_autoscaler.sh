@@ -17,13 +17,13 @@ do
     echo "Time Now: `date +%H:%M:%S`"
 
     echo "Latency detail (after 1 min)"
-    res=$(curl 10.32.1.3:8000)
+    res=$(curl monitoring-server-svc:8000)
 
     echo "Sleeping for 60 seconds"
     sleep 60
 
     echo "Getting latency details (After 2 min)"
-    latency_response=$(curl 10.32.1.3:8000)
+    latency_response=$(curl monitoring-server-svc:8000)
 
     curl --cacert ${CA_CERT} -H 'Accept: application/json' -H "Authorization: Bearer $(cat ${TOKEN})" ${URL} > scale.json
 
@@ -37,7 +37,7 @@ do
     sleep 60
     
     echo "Latency detail (after 1 min)"
-    res=$(curl 10.32.1.3:8000)
+    res=$(curl monitoring-server-svc:8000)
 
     echo "Sleeping for 60 seconds"
     sleep 60
