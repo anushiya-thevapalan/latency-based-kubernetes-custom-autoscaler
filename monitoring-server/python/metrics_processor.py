@@ -10,10 +10,9 @@ from metrics_collector import *
 latency_stats_file = "/home/monitoring-server/python/latency_stats.csv"
 latency_of_all_pods_file = "/home/monitoring-server/python/latency_of_all_pods_file.csv"
 
-time_now = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
-
 def get_metrics():
 
+    time_now = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
     ip_address = get_replicas_ip()
     latency_of_all_pods = []
 
