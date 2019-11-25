@@ -3,9 +3,13 @@
 #docker push anushiya/monitoring-server:v1
 FROM python:3.6
 
+LABEL maintainer="anushiya122@gmail.com"
+
 ADD bash /home/monitoring-server/bash
 ADD python /home/monitoring-server/python
 
+RUN apt-get update && apt-get install curl -y
+RUN apt-get install nano
 RUN apt-get update && apt-get install python3-pip -y
 RUN pip3 install numpy flask requests
 
