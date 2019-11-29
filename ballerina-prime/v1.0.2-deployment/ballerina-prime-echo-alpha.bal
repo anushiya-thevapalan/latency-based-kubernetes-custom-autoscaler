@@ -7,7 +7,7 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/io;
-import ballerina/config;
+// import ballerina/config;
 
 
 @http:ServiceConfig { basePath: "/service" }
@@ -18,7 +18,7 @@ service EchoService on new http:Listener(8688) {
         path: "/EchoService"
     }
     resource function helloResource(http:Caller caller, http:Request req) {
-        int n = config:getAsInt("prime");
+        int n = 100003;
 
         byte[]|error payload = req.getBinaryPayload();
 
