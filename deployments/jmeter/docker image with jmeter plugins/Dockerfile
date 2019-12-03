@@ -13,9 +13,6 @@ ENV JMETER_HOME /jmeter
 # Add Jmeter to the Path
 ENV PATH $JMETER_HOME/bin:$PATH
 
-RUN apt-get update; \
-    apt-get install python3.5 -y
-
 ENV JMETER_PLUGINS_MANAGER_VERSION 1.3
 ENV CMDRUNNER_VERSION 2.2
 ENV JSON_LIB_VERSION 2.4

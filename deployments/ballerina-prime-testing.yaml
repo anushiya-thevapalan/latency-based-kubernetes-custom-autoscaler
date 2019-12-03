@@ -34,4 +34,4 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 3          
       nodeSelector:
-        type: springboot-app
+        type: ballerina
